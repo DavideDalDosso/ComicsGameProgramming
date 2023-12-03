@@ -12,6 +12,12 @@ class Program00
         PasswordLock passwordLock = new PasswordLock("Our secret 1337");
 
         Console.WriteLine("Please insert the password: ");//Prompt
+
+        Util.ReadInt(() =>//TODO make a string version
+        {
+
+        });
+
         bool invalid;//Our flag for the DO WHILE loop
         do
         {
