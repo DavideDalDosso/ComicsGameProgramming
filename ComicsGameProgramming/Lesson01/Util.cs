@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 public class Util
 {
-    public static int ReadInt(Action wrongFormatAction)
+    /*public static int ReadInt(Action wrongFormatAction)
     {
         int number = 0;
         bool invalid;
@@ -23,7 +24,33 @@ public class Util
             catch (Exception ex)
             {
                 invalid = true;//Uh oh, no number can be read
-                wrongFormatAction.Invoke();
+                wrongFormatAction?.Invoke();//This may not be implemented so null-check with '?.'
+            }
+
+
+        } while (invalid);
+
+        return number;
+    }*/ //Commented out just for archive reasons
+
+    public static T ReadNumber<T>(Action wrongFormatAction) where T : INumber<T>, IConvertible//After some considerations, it's just easier to make generic number reading
+    {
+        T number = default(T);
+        bool invalid;
+        do
+        {
+            invalid = false;
+            string input = Console.ReadLine();
+            if (input == null) input = "";
+
+            try
+            {
+                number = (T)Convert.ChangeType(input, typeof(T));
+            }
+            catch (Exception ex)
+            {
+                invalid = true;
+                wrongFormatAction?.Invoke();
             }
 
 

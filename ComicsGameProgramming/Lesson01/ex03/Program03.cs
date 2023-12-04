@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Please insert how many numbers to put: ");
+        Console.WriteLine("Please insert how many numbers to put: ");//Prompt
 
-        int nNumbers = Util.ReadInt(() =>
+        int nNumbers = Util.ReadNumber<int>(() =>
         {
             Console.WriteLine("Please insert a valid number");
         });
 
         int[] array = new int[nNumbers];
 
-        Console.WriteLine("Please put as many numbers as requested before: ");
+        Console.WriteLine("Please put as many numbers as requested before: ");//Prompt
 
         for (int i = 0; i < nNumbers; i++)
         {
-            array[i] = Util.ReadInt(() =>
+            array[i] = Util.ReadNumber<int>(() =>
             {
                 Console.WriteLine("Please insert a valid number");
             });
@@ -30,9 +30,9 @@ using System.Threading.Tasks;
 
         Console.WriteLine("\n");
 
-        string resultMsg = FindIncreasingSequence(nNumbers, array) ? "Ordered!" : "Unordered...";
+        string resultMsg = FindIncreasingSequence(nNumbers, array) ? "Ordered!" : "Unordered...";//Pre-result message
 
-        Console.WriteLine("The array is: " + resultMsg);
+        Console.WriteLine("The array is: " + resultMsg);//Result output
     }
 
     public static bool FindIncreasingSequence(int numbers, int[] sequence) //I would've preferred to automatically get the array bounds
