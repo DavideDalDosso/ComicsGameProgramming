@@ -10,14 +10,14 @@ class Program02
     {
         Console.WriteLine("Insert the length: ");//Prompt
 
-        int length = Util.ReadInt(() =>
+        int length = Util.ReadNumber<int>(() =>
         {
             Console.WriteLine("Please insert a valid number");
         });
 
         Console.WriteLine("Insert the height: ");//Prompt
 
-        int height = Util.ReadInt(() =>
+        int height = Util.ReadNumber<int>(() =>
         {
             Console.WriteLine("Please insert a valid number");
         });
