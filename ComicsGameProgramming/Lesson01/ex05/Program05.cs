@@ -27,17 +27,17 @@ class Program05
 
         Console.WriteLine("\n");
 
-        Console.WriteLine("The double of A is: " + doubleA);
+        Console.WriteLine("The double of A is: " + doubleA);//Double output
 
         float product = CalculateProduct<float>(a, b);
 
         Console.WriteLine("\n");
 
-        Console.WriteLine("The product of A and B is: " + product);
+        Console.WriteLine("The product of A and B is: " + product);//Product output
 
         Console.WriteLine("\n");
 
-        if (a == b)
+        if (a == b)//Output of the comparison result
         {
             Console.WriteLine("Both A and B have equal number");
         } else
@@ -69,13 +69,28 @@ class Program05
 
         Console.WriteLine("\n");
 
-        Console.WriteLine("Array : " + Util.ArrayToString(array));
+        Console.WriteLine("Array : " + Util.ArrayToString(array)); //Quick output of the overall array
 
         Console.WriteLine("\n");
 
         int sum = CalculateSum(array);
 
-        Console.WriteLine("The sum of all the array elements is: " + sum);
+        Console.WriteLine("The sum of all the array elements is: " + sum); //Sum output
+
+        Console.WriteLine("\n");
+
+        Console.WriteLine("Please put the value of the number to find: ");//Prompt
+
+        int presentN = Util.ReadNumber<int>(() =>
+        {
+            Console.WriteLine("Please insert a valid number");
+        });
+
+        string presentResult = NumberPresent(array, presentN) ? "Present!" : "Missing!";//Getting a string wherever it is present or not
+
+        Console.WriteLine("\n");
+
+        Console.WriteLine("The number '" + presentN + "' is: " + presentResult); //Presence output
     }
 
     public static T CalculateDouble<T>(T number) where T : INumber<T>
@@ -104,5 +119,12 @@ class Program05
         if (a.CompareTo(b) >= 0) return a; else return b;//CompareTo gives -1 on smaller; 0 on equal; 1 on bigger
     }//WARNING: it must return one regardless if they're equal so it returns A by default
 
-    //TODO: NumberPresent
+    public static bool NumberPresent<T>(IEnumerable<T> array, T number) where T: INumber<T>
+    {
+        foreach(T n in array)
+        {
+            if(n ==  number) return true;
+        }
+        return false;
+    }
 }
