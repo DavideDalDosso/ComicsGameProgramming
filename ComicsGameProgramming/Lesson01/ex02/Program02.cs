@@ -10,47 +10,17 @@ class Program02
     {
         Console.WriteLine("Insert the length: ");//Prompt
 
-        int length = 0;
-        int height = 0;
-        bool invalid;
-        do
+        int length = Util.ReadInt(() =>
         {
-            invalid = false;
-            string input = Console.ReadLine();//Reading input
-            if (input == null) input = "";//Resolving null exception for compiler sake
-
-            try
-            {
-                length = int.Parse(input);//Converting input to number
-            }
-            catch (Exception ex)
-            {
-                invalid = true;//Uh oh, no number can be read
-            }
-
-
-        } while (invalid);
+            Console.WriteLine("Please insert a valid number");
+        });
 
         Console.WriteLine("Insert the height: ");//Prompt
 
-        do//Same deal but for a different variable
+        int height = Util.ReadInt(() =>
         {
-
-            invalid = false;
-            string input = Console.ReadLine();
-            if (input == null) input = "";
-
-            try
-            {
-                height = int.Parse(input);
-            }
-            catch (Exception ex)
-            {
-                invalid = true;
-            }
-
-
-        } while (invalid);//We can recycle the previous flag for this loop too
+            Console.WriteLine("Please insert a valid number");
+        });
 
         string buffer = "";//Just a string buffer to avoid clogging the output stream for every single character
         string buffer2 = "";

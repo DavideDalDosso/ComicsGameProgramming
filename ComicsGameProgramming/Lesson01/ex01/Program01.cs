@@ -10,24 +10,10 @@ public class Program01
     {
         Console.WriteLine("Insert the length: ");//Prompt
 
-        int length = 0;
-        bool invalid;
-        do
+        int length = Util.ReadInt(() =>//Oh sure thing making this utility class was much better than do this every time
         {
-            invalid = false;//Resetting flag in orded to possibly leave loop
-            string input = Console.ReadLine();//Reading input
-            if (input == null) input = "";//Resolving null exception for compiler sake
-
-            try
-            {
-                length = int.Parse(input);//Converting input to number
-            } catch (Exception ex)
-            {
-                invalid = true;//Uh oh, no number can be read
-            }
-
-
-        } while (invalid);
+            Console.WriteLine("Please insert a valid number");
+        });
 
         string buffer = "";//Just a string buffer to avoid clogging the output stream for every single character
         string buffer2 = "";

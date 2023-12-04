@@ -9,47 +9,30 @@ using System.Threading.Tasks;
 {
     public static void Main(string[] args)
     {
-        int nNumbers = 0;
-        bool invalid;
-        do
+        Console.WriteLine("Please insert how many numbers to put: ");
+
+        int nNumbers = Util.ReadInt(() =>
         {
-            invalid = false;
-            string input = Console.ReadLine();//Reading input
-            if (input == null) input = "";//Resolving null exception for compiler sake
+            Console.WriteLine("Please insert a valid number");
+        });
 
-            try
-            {
-                nNumbers = int.Parse(input);//Converting input to number
-            }
-            catch (Exception ex)
-            {
-                invalid = true;//Uh oh, no number can be read
-            }
+        int[] array = new int[nNumbers];
 
-
-        } while (invalid);
+        Console.WriteLine("Please put as many numbers as requested before: ");
 
         for (int i = 0; i < nNumbers; i++)
         {
-            bool invalid;
-            do
+            array[i] = Util.ReadInt(() =>
             {
-                invalid = false;
-                string input = Console.ReadLine();//Reading input
-                if (input == null) input = "";//Resolving null exception for compiler sake
-
-                try
-                {
-                    length = int.Parse(input);//Converting input to number
-                }
-                catch (Exception ex)
-                {
-                    invalid = true;//Uh oh, no number can be read
-                }
-
-
-            } while (invalid);
+                Console.WriteLine("Please insert a valid number");
+            });
         }
+
+        Console.WriteLine("\n");
+
+        string resultMsg = FindIncreasingSequence(nNumbers, array) ? "Ordered!" : "Unordered...";
+
+        Console.WriteLine("The array is: " + resultMsg);
     }
 
     public static bool FindIncreasingSequence(int numbers, int[] sequence) //I would've preferred to automatically get the array bounds
