@@ -31,4 +31,36 @@ public class Util
 
         return number;
     }
+
+    public static string ReadString()
+    {
+        string input = "";
+        bool invalid;
+        do
+        {
+            invalid = false;
+            input = Console.ReadLine();//Reading input
+            if (input == null) input = "";//Resolving null exception for compiler sake
+
+
+        } while (invalid);
+
+        return input;
+    }
+
+    public static string ArrayToString<T>(T[] array)
+    {
+        string buffer = "[";
+
+        int i;
+
+        for(i=0; i<array.Length-1; i++)
+        {
+            buffer += array[i].ToString() + ", " ;
+        }
+
+        buffer += array[i].ToString() + "]";
+
+        return buffer;
+    }
 }

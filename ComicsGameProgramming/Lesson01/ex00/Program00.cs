@@ -13,24 +13,16 @@ class Program00
 
         Console.WriteLine("Please insert the password: ");//Prompt
 
-        Util.ReadInt(() =>//TODO make a string version
-        {
-
-        });
-
-        bool invalid;//Our flag for the DO WHILE loop
+        bool guessed;//Our flag for the DO WHILE loop
         do
         {
-            string input;//The buffer for input
+            string input = Util.ReadString();
 
-            input = Console.ReadLine();//Reading input
-            if (input == null) input = "";//Resolving null exception for compiler sake
+            guessed = !passwordLock.CheckCorrect(input);//If it's wrong, mark for another attempt
 
-            invalid = !passwordLock.CheckCorrect(input);//If it's wrong, mark for another attempt
+            if(!guessed) Console.WriteLine("Unfortunately the password is wrong. Please retry... "); //Wrong answer message
 
-            if(invalid) Console.WriteLine("Unfortunately the password is wrong. Please retry... "); //Wrong answer message
-
-        } while (invalid);//Retry the procedure if it's wrong
+        } while (!guessed);//Retry the procedure if it's wrong
 
         Console.WriteLine("Congratulations, the password is correct. ");
     }
